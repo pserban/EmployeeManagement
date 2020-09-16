@@ -7,7 +7,7 @@ namespace EmployeeManagement.Models
 {
     public class MockEmployeeRepository : IEmployeeRepository
     {
-        private List<Employee> _employeeList;
+        private readonly List<Employee> _employeeList;
 
         public MockEmployeeRepository()
         {
