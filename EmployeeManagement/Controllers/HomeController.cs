@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -19,7 +19,7 @@ namespace EmployeeManagement.Controllers
         }
 
         [Route("")]
-        [Route("[action]")]
+        [Route("~/Home")]
         [Route("~/")]
         public ViewResult Index()
         {
@@ -27,7 +27,7 @@ namespace EmployeeManagement.Controllers
             return View(model);
         }
 
-        [Route("[action]/{id?}")]
+        [Route("{id?}")]
         public ViewResult Details(int? id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
