@@ -27,7 +27,7 @@ namespace EmployeeManagement
         {
             services
                 .AddMvc(options => options.EnableEndpointRouting = false)
-                .AddXmlDataContractSerializerFormatters();
+                .AddXmlSerializerFormatters();
             services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
         }
 
