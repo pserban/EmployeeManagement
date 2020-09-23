@@ -19,7 +19,7 @@ namespace EmployeeManagement.Controllers
 
         public ViewResult Index()
         {
-            var model = _employeeRepository.GetEmployees();
+            var model = _employeeRepository.GetAllEmployee();
             return View(model);
         }
 

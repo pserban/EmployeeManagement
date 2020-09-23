@@ -31,7 +31,7 @@ namespace EmployeeManagement.Models
             return _employeeList.FirstOrDefault(emp => emp.Id == Id);
         }
 
-        public IEnumerable<Employee> GetEmployees()
+        public IEnumerable<Employee> GetAllEmployee()
         {
             return _employeeList;
         }
