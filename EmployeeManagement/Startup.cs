@@ -31,7 +31,7 @@ namespace EmployeeManagement
                     options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")))
                 .AddMvc(options => options.EnableEndpointRouting = false)
                 .AddXmlSerializerFormatters();
-            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
