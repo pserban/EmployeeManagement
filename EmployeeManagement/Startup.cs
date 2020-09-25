@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +27,8 @@ namespace EmployeeManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services
+                .AddDbContextPool<AppDbContext>(
+                    options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")))
                 .AddMvc(options => options.EnableEndpointRouting = false)
                 .AddXmlSerializerFormatters();
             services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
