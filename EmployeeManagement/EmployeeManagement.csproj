@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200927180844_AlterEmployeesSeedData2.cs" />
+    <Compile Remove="Migrations\20200927180844_AlterEmployeesSeedData2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
