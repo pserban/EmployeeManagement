@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200927175313_SeedEmployeesTable.cs" />
+    <Compile Remove="Migrations\20200927175313_SeedEmployeesTable.Designer.cs" />
     <Compile Remove="Migrations\20200927180844_AlterEmployeesSeedData2.cs" />
     <Compile Remove="Migrations\20200927180844_AlterEmployeesSeedData2.Designer.cs" />
+    <Compile Remove="Migrations\20200928135337_AddPhotoPathColumn.cs" />
+    <Compile Remove="Migrations\20200928135337_AddPhotoPathColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200928135941_AddSomeProperty.cs" />
+    <Compile Remove="Migrations\20200928135941_AddSomeProperty.Designer.cs" />
+    <Compile Remove="Migrations\20200928140455_AddPhotoPathColumn.cs" />
+    <Compile Remove="Migrations\20200928140455_AddPhotoPathColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200928140702_AddSomeProperty.cs" />
+    <Compile Remove="Migrations\20200928140702_AddSomeProperty.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

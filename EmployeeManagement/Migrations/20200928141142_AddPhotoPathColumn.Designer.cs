@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200927175313_SeedEmployeesTable")]
-    partial class SeedEmployeesTable
+    [Migration("20200928141142_AddPhotoPathColumn")]
+    partial class AddPhotoPathColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,9 @@ namespace EmployeeManagement.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
@@ -48,8 +51,15 @@ namespace EmployeeManagement.Migrations
                         {
                             Id = 1,
                             Department = 2,
-                            Email = "mark@pragimtech.com",
-                            Name = "Mark"
+                            Email = "mary@pragimtech.com",
+                            Name = "Mary"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Department = 1,
+                            Email = "john@pragimtech.com",
+                            Name = "John"
                         });
                 });
 #pragma warning restore 612, 618

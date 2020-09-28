@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200927175557_AlterEmployeesSeedData")]
-    partial class AlterEmployeesSeedData
+    [Migration("20200928134559_SeedEmployeesTable")]
+    partial class SeedEmployeesTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
