@@ -33,7 +33,12 @@ namespace EmployeeManagement
                 .AddMvc(options => options.EnableEndpointRouting = false)
                 .AddXmlSerializerFormatters();
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                    options.Password.RequiredLength = 10;
+                    options.Password.RequiredUniqueChars = 3;
+                    options.Password.RequireNonAlphanumeric = false;
+                })
                 .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
