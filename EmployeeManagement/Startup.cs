@@ -6,6 +6,7 @@ using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,10 @@ namespace EmployeeManagement
                     options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")))
                 .AddMvc(options => options.EnableEndpointRouting = false)
                 .AddXmlSerializerFormatters();
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
         }
 
@@ -48,7 +53,7 @@ namespace EmployeeManagement
             }
 
             app.UseStaticFiles();
-            // app.UseMvcWithDefaultRoute();
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
