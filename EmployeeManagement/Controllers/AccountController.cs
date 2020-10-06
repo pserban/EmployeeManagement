@@ -83,7 +83,7 @@ namespace EmployeeManagement.Controllers
                 {
                     if (!String.IsNullOrWhiteSpace(returnUrl))
                     {
-                        return Redirect(returnUrl);
+                        return LocalRedirect(returnUrl);
                     }
                     else
                     {
