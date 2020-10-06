@@ -81,9 +81,9 @@ namespace EmployeeManagement.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (!String.IsNullOrWhiteSpace(returnUrl))
+                    if (!String.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
-                        return LocalRedirect(returnUrl);
+                        return Redirect(returnUrl);
                     }
                     else
                     {
