@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManagement.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +33,13 @@ namespace EmployeeManagement
             services
                 .AddDbContextPool<AppDbContext>(
                     options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")))
-                .AddMvc(options => options.EnableEndpointRouting = false)
+                .AddMvc(options => { 
+                    options.EnableEndpointRouting = false;
+                    var policy = new AuthorizationPolicyBuilder(new[] { IdentityConstants.ApplicationScheme })
+                                        .RequireAuthenticatedUser()
+                                        .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+                })
                 .AddXmlSerializerFormatters();
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
