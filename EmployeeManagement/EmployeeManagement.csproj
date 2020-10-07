@@ -18,6 +18,8 @@
     <Compile Remove="Migrations\20200928140455_AddPhotoPathColumn.Designer.cs" />
     <Compile Remove="Migrations\20200928140702_AddSomeProperty.cs" />
     <Compile Remove="Migrations\20200928140702_AddSomeProperty.Designer.cs" />
+    <Compile Remove="Migrations\20201007000105_Extend_IdentityUser.cs" />
+    <Compile Remove="Migrations\20201007000105_Extend_IdentityUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
