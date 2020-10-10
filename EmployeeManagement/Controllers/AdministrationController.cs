@@ -70,22 +70,15 @@ namespace EmployeeManagement.Controllers
                 ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
                 return View("NotFound");
             }
-            
+
             var model = new EditRoleViewModel
             {
                 Id = role.Id,
                 RoleName = role.Name
             };
 
-            var users = userManager.Users.ToList<ApplicationUser>();
-            
-            foreach(var user in users)
-            {
-                if (await userManager.IsInRoleAsync(user, role.Name))
-                {
-                    model.Users.Add(user.UserName);
-                }
-            }
+            var usersInRole = await userManager.GetUsersInRoleAsync(role.Name);
+            model.Users.AddRange(usersInRole.Select((user, index) => user.UserName));
 
             return View(model);
         }
