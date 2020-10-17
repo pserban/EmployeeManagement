@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 namespace EmployeeManagement.Controllers
 {
     [Authorize(Roles="Admin")]
-    [Authorize(Roles="User")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -205,6 +204,7 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "DeleteRolePolicy")]
         public async Task<IActionResult> DeleteRole(string id)
         {
             var role = await roleManager.FindByIdAsync(id);
