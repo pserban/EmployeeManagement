@@ -65,6 +65,8 @@ namespace EmployeeManagement
                     policy => policy.AddRequirements(new ManageAdminRolesAndClaimsRequirement())
                 );
 
+                // options.InvokeHandlersAfterFailure = false;
+
                 options.AddPolicy("AdminRolePolicy",
                     policy => policy.RequireRole("Admin"));
             });
