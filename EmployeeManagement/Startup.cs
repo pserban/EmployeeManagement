@@ -77,6 +77,9 @@ namespace EmployeeManagement
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.Configure<DataProtectionTokenProviderOptions>(o =>
+                    o.TokenLifespan = TimeSpan.FromHours(5));
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("DeleteRolePolicy",
