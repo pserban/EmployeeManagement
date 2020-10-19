@@ -46,8 +46,8 @@ namespace EmployeeManagement
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
-                    options.ClientId = "******";
-                    options.ClientSecret = "****";
+                    options.ClientId = "********";
+                    options.ClientSecret = "******";
                 });
 
             services.ConfigureApplicationCookie(options =>
