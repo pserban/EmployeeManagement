@@ -48,6 +48,11 @@ namespace EmployeeManagement
                 {
                     options.ClientId = "********";
                     options.ClientSecret = "******";
+                })
+                .AddFacebook(options => 
+                {
+                    options.AppId = "********";
+                    options.AppSecret = "********";
                 });
 
             services.ConfigureApplicationCookie(options =>
