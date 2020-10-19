@@ -73,12 +73,19 @@ namespace EmployeeManagement
                     options.Password.RequireNonAlphanumeric = false;
 
                     options.SignIn.RequireConfirmedEmail = true;
+
+                    options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
                 })
                 .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddTokenProvider<CustomEmailConfirmationTokenProvider
+                                        <ApplicationUser>>("CustomEmailConfirmation"); ;
 
             services.Configure<DataProtectionTokenProviderOptions>(o =>
                     o.TokenLifespan = TimeSpan.FromHours(5));
+
+            services.Configure<CustomEmailConfirmationTokenProviderOptions>(o =>
+                    o.TokenLifespan = TimeSpan.FromDays(3));
 
             services.AddAuthorization(options =>
             {
