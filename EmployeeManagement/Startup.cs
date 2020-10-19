@@ -33,7 +33,7 @@ namespace EmployeeManagement
             services
                 .AddDbContextPool<AppDbContext>(
                     options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")))
-                .AddMvc(options => { 
+                .AddMvc(options => {
                     options.EnableEndpointRouting = false;
                     var policy = new AuthorizationPolicyBuilder(new[] { IdentityConstants.ApplicationScheme })
                                         .RequireAuthenticatedUser()
@@ -61,7 +61,11 @@ namespace EmployeeManagement
                     policy => policy.RequireClaim("Delete Role"));
 
                 options.AddPolicy("EditRolePolicy",
-                    policy => policy.RequireClaim("Edit Role", "true"));
+                    policy => policy.RequireAssertion(context =>
+                        (context.User.IsInRole("Admin") &&
+                        context.User.HasClaim(claim => claim.Type == "Edit Role" && claim.Value == "true")) ||
+                        context.User.IsInRole("Super Admin")
+                    ));
 
                 options.AddPolicy("AdminRolePolicy",
                     policy => policy.RequireRole("Admin"));
