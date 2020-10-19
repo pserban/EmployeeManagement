@@ -43,6 +43,13 @@ namespace EmployeeManagement
                 })
                 .AddXmlSerializerFormatters();
 
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "******";
+                    options.ClientSecret = "****";
+                });
+
             services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = new PathString("/Administration/AccessDenied");
