@@ -46,13 +46,19 @@ namespace EmployeeManagement
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
-                    options.ClientId = "********";
-                    options.ClientSecret = "******";
+                    IConfigurationSection googleAuthNSection =
+                        _config.GetSection("Authentication:Google");
+
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
                 })
                 .AddFacebook(options => 
                 {
-                    options.AppId = "********";
-                    options.AppSecret = "********";
+                    IConfigurationSection facebookAuthNSection =
+                        _config.GetSection("Authentication:Facebook");
+
+                    options.AppId = facebookAuthNSection["AppId"];
+                    options.AppSecret = facebookAuthNSection["AppSecret"];
                 });
 
             services.ConfigureApplicationCookie(options =>
